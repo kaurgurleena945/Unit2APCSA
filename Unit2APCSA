@@ -1,0 +1,102 @@
+/**
+ * Unit 2 Project 
+ *
+ * @author Gurleen Kaur 
+ * @version 10/29/2020
+ */
+public class Books //this is my class, called books 
+{
+    // instance variables - replace the example below with your own
+    private String bookTitle; 
+    private String genre; //these are all my instance variables 
+    private boolean Happyending; 
+    private int Enjoyment; 
+    private String author; 
+
+    /**
+     * Constructor for objects of class Books
+     */
+    public Books(String theBookTitle, String theGenre, boolean happyEnding, int enjoyment)
+    {
+        // initialise instance variables
+        bookTitle = theBookTitle;
+        genre = theGenre; 
+        Happyending = happyEnding;
+        Enjoyment = enjoyment; 
+        
+    }
+    
+    //This is the second constructor 
+    public Books(String Author){
+        author = Author; 
+        
+    }
+ 
+
+   
+     //this is my method to return the ratings 
+    public static int addRatings(boolean Happyending, String genre, int Enjoyment, String Author, String theBookTitle){
+        // put your code here
+        int star1 = 0; 
+        int star2 = 0; 
+        int star3 = 0; 
+        int star4 = 0; //these are my stars variables to make the rating 
+        int star5 = 0; 
+        
+        if(Happyending == true) {//if Happy ending is true, add one star and print to viewer 
+            star1 = 1; 
+            System.out.println("This book has a happy ending! It gets a positive review because of it."); 
+        }
+        if(genre == "SciFi") {//if genre is SciFi is genre, add another star and print to viewer 
+            star2 = 1; 
+            System.out.println("This book is SciFi! It gets a positive review because this is the review's favorite genre"); 
+        }
+        if(Enjoyment == 5) {//if Enjoyment is 5 on a scale from 1 to 5
+            star3 = 1; 
+        }
+        if (Author == "Marissa Meyer"){//if Author is her
+            star4 = 1; 
+        }
+        if (theBookTitle == "Cinder"){//if Book is Cinder
+            star5 = 1; 
+        }
+        
+        int stars = star1 + star2 + star3 + star4 + star5; //add the stars 
+        int max = 5; //the max and min in to determine the range for the Math.random
+        int min = 1; 
+        int range = (max - min) + 1; //determining range 
+        System.out.println(stars); //printing the stars 
+        int other = (int) (Math.random() * range) + min;  //finding a random number 
+        System.out.println("This is the review by another reviewer " + other); //printing the number 
+        return stars; 
+    }
+    
+    public static void main(String[] args){
+        Books Cinder = new Books("Cinder", "SciFi", true, 5); //new objects 
+        Books Crucible = new Books("Crucible", "Theatre", false, 2); 
+        
+        Books Cinder2 = new Books("Marissa Meyer"); 
+        Books Crucible2 = new Books("Marylin Monroe's ex husband"); 
+        
+        System.out.println("Cinder info: "); 
+        System.out.println(Cinder.bookTitle); 
+        System.out.println(Cinder.genre); //printing all of the info 
+        System.out.println(Cinder.Happyending); 
+        System.out.println(Cinder.Enjoyment); 
+        System.out.println("Cinder Author: "); 
+        System.out.println(Cinder2.author); 
+        System.out.println("Crucible info: "); 
+        System.out.println(Crucible.bookTitle); 
+        System.out.println(Crucible.genre); 
+        System.out.println(Crucible.Happyending); 
+        System.out.println(Crucible.Enjoyment);
+        System.out.println("Crucible Author"); 
+        System.out.println(Crucible2.author); 
+        
+        System.out.println(Cinder.bookTitle); 
+        
+        addRatings(Cinder.Happyending, Cinder.genre, Cinder.Enjoyment, Cinder2.author, Cinder.bookTitle);
+        addRatings(Crucible.Happyending, Crucible.genre, Crucible.Enjoyment, Crucible2.author, Crucible.bookTitle);
+        //using these functions to use the objects info to find the ratings 
+    }
+}
